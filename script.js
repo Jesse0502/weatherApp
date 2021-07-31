@@ -17,7 +17,6 @@ search.addEventListener("click", (e) => {
         console.log("Sending data")
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${userInput.value}&appid=45c45660fb0f0aa65fa34d6436ae1559`, {mode: "cors"})
         .then((response) => { 
-            // console.log(response.json())
             return response.json();
         })
         .then((response) => {
@@ -32,11 +31,6 @@ search.addEventListener("click", (e) => {
             feels.textContent = ""
             body.style.backgroundImage = "url('./assets/space.jpg')"
         })
-
-        // loading.addEventListener("load", () => {
-        //     body.classList.add("loading")
-        // })
-
         function showTemp(response){
             let country = response.sys.country
             if(country == undefined){
