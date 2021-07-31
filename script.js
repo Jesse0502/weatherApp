@@ -26,7 +26,7 @@ search.addEventListener("click", (e) => {
 
 async function main(){
  try{  let response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${userInput.value}&appid=45c45660fb0f0aa65fa34d6436ae1559`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${userInput.value}&appid=45c45660fb0f0aa65fa34d6436ae1559`,
     { mode: "cors" }
   )
   let data = await response.json()
