@@ -7,6 +7,8 @@ let cityName =
 let temp = document.querySelector("#temp");
 let feels = document.querySelector("#feels");
 let body = document.querySelector("body");
+let loader = document.querySelector(".loader-wrapper")
+let loaderContent = document.querySelector(".loader-content")
 
 search.addEventListener("click", (e) => {
   e.preventDefault();
@@ -25,6 +27,9 @@ search.addEventListener("click", (e) => {
 });
 
 async function main(){
+
+  loader.style.display = "block"
+  loaderContent.textContent = "Retrieving data.."
  try{  let response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${userInput.value}&appid=45c45660fb0f0aa65fa34d6436ae1559`,
     { mode: "cors" }
@@ -39,31 +44,57 @@ async function main(){
   feels.textContent = "";
   body.style.backgroundImage =
     "url('./assets/space.jpg')";
+  loader.style.display = "none"
+
   }
 }
 
 
 function checkFeels(response) {
-  if (response.weather[0].main == "Clear") {
+  loaderContent.textContent = ""
+
+  loaderContent.textContent = "Getting background.."
+
+  if (response.weather[0].main == "Clear") { 
     body.style.backgroundImage =
       "url('./assets/clear.jpg')";
+  loader.style.display = "none"
+
   }
   if (response.weather[0].main == "Clouds") {
     body.style.backgroundImage =
       "url('./assets/cloudy.jpg')";
+  loader.style.display = "none"
+
   }
   if (response.weather[0].main == "Rain") {
     body.style.backgroundImage =
       "url('./assets/rain.jpg')";
+  loader.style.display = "none"
+
   }
   if (response.weather[0].main == "Haze") {
     body.style.backgroundImage =
       "url('./assets/haze.jpg')";
+  loader.style.display = "none"
+
+  }
+  if(
+    response.weather[0].main !== "Clear" &&
+    response.weather[0].main !== "Clouds" &&
+    response.weather[0].main !== "Rain" &&
+    response.weather[0].main !== "Haze" 
+
+   ){
+    body.style.backgroundImage = "url('./assets/world.jpg')"
+  loader.style.display = "none"
   }
 }
 
 function showTemp(response) {
- 
+  loaderContent.textContent = ""
+  loaderContent.textContent = "Getting data.."
+
   let country = response.sys.country;
   if (country == undefined) {
     cityName.textContent = response.name;
