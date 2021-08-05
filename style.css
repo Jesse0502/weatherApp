@@ -37,10 +37,12 @@ body{
     background: rgba(255, 255, 255, 0.466);
     border: 1px solid rgb(26, 26, 26);
     border-right: none;
-    border-radius: 25px;
-    width: 300px;
+    border-radius: 20px;
+    width: 350px;
     padding: 20px 0px 20px 0px;
 }
+
+
 
 #temp{
     margin-top: -5px;
@@ -58,7 +60,7 @@ text-shadow: 1px 1px rgba(0, 0, 0, 0.836);
 #search{
     background: rgba(255, 255, 255, 0);
     border: 0px solid rgb(255, 255, 255); 
-    border-radius: 50px;
+    border-radius: 20px;
     margin-left: -50px;
     font-size: 1.9em;
     position: relative;
@@ -72,19 +74,98 @@ text-shadow: 1px 1px rgba(0, 0, 0, 0.836);
     background-color: rgba(245, 245, 245, 0.493); 
 }
  
-.loading{
-    background-color: black;
+.loader-wrapper{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.733);
+    display: none;
+}
+
+.loader{
+    position: relative;
+    height: 100px;
+    
+    margin: auto;
+    width: 28%;
+    justify-content: center;
+    margin-top: 20%;
+    display: flex;
+    gap: 30px;
+}
+
+.spinner{
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #2987c5;
+    width: 45px;
+    height: 45px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.loader-content{
+    color: white;
+    font-size: 1.7em; 
 }
 
 @media all and (max-width: 400px){
     body{
         height: 100vh;
+        word-break: keep-all;
     }
     #hero-heading{
         margin-top: 10vh;
-        font-size: 2.3em;
+        font-size: 2.4em;
     }
- #search{
-padding: 0px 0px 20px 0px;
+    #city-name{
+        font-size: 2.4em;
+        color: steelblue; 
+        text-shadow: 2px 2px  rgb(26, 26, 26); 
+    }
+    #temp{
+        margin-top: 15px;
+        font-size: 2.2em;
+        color: steelblue; 
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.541) ;
+        cursor: pointer;
+    }
+     
+    #feels{
+        color: yellow;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.836);
+    }
+
+#city-input{
+ 
+    width: 300px;
+    padding: 20px 0px 20px 0px;
 }
+ 
+
+.loader{
+    position: relative;
+    height: 100px; 
+    margin: auto;
+    width: 35%;
+    justify-content: center;
+    margin-top: 350px; 
+}
+ 
+.loader-content{ 
+    display: none;
+}
+
 }
