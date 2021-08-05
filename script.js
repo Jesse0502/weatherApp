@@ -20,8 +20,7 @@ search.addEventListener("click", (e) => {
     alert("Enter a city");
   }
   if (userInput !== "") {
-    body.classList.add("loading");
-    console.log("Sending data");
+    body.classList.add("loading"); 
    main() 
   }
 });
@@ -30,6 +29,7 @@ async function main(){
 
   loader.style.display = "block"
   loaderContent.textContent = "Retrieving data.."
+  console.log("Sending data")
  try{  let response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${userInput.value}&appid=45c45660fb0f0aa65fa34d6436ae1559`,
     { mode: "cors" }
@@ -52,6 +52,7 @@ async function main(){
 
 function checkFeels(response) {
   loaderContent.textContent = ""
+  console.log("Getting background")
 
   loaderContent.textContent = "Getting background.."
 
@@ -92,6 +93,8 @@ function checkFeels(response) {
 }
 
 function showTemp(response) {
+  console.log("Getting info..")
+
   loaderContent.textContent = ""
   loaderContent.textContent = "Getting data.."
 
